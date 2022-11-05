@@ -3,31 +3,28 @@ class Solution(object):
         """
         :type n: int
         :rtype: int
+        this is a dinamic cording problem, solving it recursive works but takes a lot of time.
+        also it solves same thing over and over again. for example imagine if there is only two steps
+        that should be the same number of ways to climb of any n nuber last two steps. so solving this
+        dinamicaly is the best way to do it.
+        this is the same concept of fibanachi sequence
         """
         
-        output =0
-        
-
-        def climb(steps,output):
+        if n <= 2: return n
+        x,y = 1,2
+        for i in range(3,n):
+            temp = y
+            y = x+y
+            x = temp
             
-            if steps>= 1:
-                output +=1
-                steps-=1
-                climb(steps,output)
-            if steps>=2:
-                output+=1
-                steps -=2
-                climb(steps,output)
-            if steps == 0:
-                print(output)
-                return
-        climb(n,output)
-        print(output)  
-        return output
+        return x+y
+            
+            
+        
               
         
         
-    
+
 obj = Solution()
 
-obj.climbStairs(40)               
+print(obj.climbStairs(40))               
